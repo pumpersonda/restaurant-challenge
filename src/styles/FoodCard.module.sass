@@ -1,0 +1,47 @@
+$layout-breakpoint-small: 960px
+
+.foodCardContainer
+    align-items: center
+    display: flex
+    flex-direction: column
+    font-weight: 600
+
+.foodCardContent
+    align-items: center
+    display: flex
+    flex-direction: column
+    border: 1px solid black
+    padding: 15px 36px
+
+.foodCardTextContent
+    display: flex
+    flex-direction: column
+
+.foodCardTextTitle
+    padding: 15px
+    border-bottom: 1px solid black
+
+.foodCardRating
+    display: flex
+    justify-content: space-between
+    padding: 15px 0
+
+.foodCardButtonContent
+    padding-top: 20px
+    margin-bottom: -20px
+
+@media (max-width: $layout-breakpoint-small)
+    .foodCardImg
+        padding: 0 20px 0 0
+    .foodCardTextTitle
+        border: none
+        padding: 0
+    .foodCardContainer,
+    .foodCardContent
+        flex-direction: row
+        border: none
+    .foodCardRating
+        flex-direction: column
+        padding: 0
+    .foodCardButtonContent
+        margin-bottom: 0

@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         pathname: "/bphoto/**",
       },
+      {
+        protocol: "https",
+        hostname: "s3-media4.fl.yelpcdn.com",
+        port: "",
+        pathname: "/bphoto/**",
+      },
     ],
   },
 };

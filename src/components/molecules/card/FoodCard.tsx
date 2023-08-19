@@ -5,6 +5,7 @@ import Image from "next/image";
 import Ratings from "../rating/Ratings";
 
 export interface FoodCardProps {
+  id: string;
   imageUrl: string;
   name: string;
   rating: number;

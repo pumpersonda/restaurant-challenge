@@ -5,12 +5,87 @@ import styles from "@/styles/Home.module.css";
 import ButtonView from "@/components/atoms/button/ButtonView";
 import CategoryField from "@/components/atoms/category/CategoryField";
 import { SkeletonShape } from "@/components/atoms/skeletonShape/SkeletonShape";
-import FoodCard from "@/components/molecules/card/FoodCard";
+import FoodCard, { FoodCardProps } from "@/components/molecules/card/FoodCard";
 import { RatingIcon } from "@/components/atoms/rating/RatingIcon";
+import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const restaurants: FoodCardProps[] = [
+    {
+      id: "1",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+    {
+      id: "2",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+    {
+      id: "3",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+    {
+      id: "4",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+    {
+      id: "5",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+    {
+      id: "6",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+    {
+      id: "7",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+    {
+      id: "8",
+      name: "Ada's Cafe",
+      imageUrl:
+        "https://s3-media4.fl.yelpcdn.com/bphoto/O9rfSxTJd6KKSqdwjGJ66Q/o.jpg",
+      rating: 4.5,
+      price: "$$",
+      url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
+    },
+  ];
   return (
     <>
       <Head>
@@ -22,13 +97,7 @@ export default function Home() {
       <main className={styles.main}>
         <CategoryField text={"Vegetarian"} />
         <div>
-          <FoodCard
-            name="Ada's Cafe"
-            rating={3.5}
-            price="$$$"
-            url="xxx"
-            imageUrl="https://s3-media3.fl.yelpcdn.com/bphoto/Hg53Z1OSv8tfAOSXPL1fLQ/o.jpg"
-          />
+          <RestaurantsLayout restaurantList={restaurants} />
         </div>
       </main>
     </>

@@ -8,6 +8,7 @@ import { SkeletonShape } from "@/components/atoms/skeletonShape/SkeletonShape";
 import FoodCard, { FoodCardProps } from "@/components/molecules/card/FoodCard";
 import { RatingIcon } from "@/components/atoms/rating/RatingIcon";
 import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
+import Categories from "@/components/molecules/categories/Categories";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -86,6 +87,8 @@ export default function Home() {
       url: "https://www.yelp.com/biz/fonda-colombiana-2-san-jose?adjust_creative=b7iBj7x4wh3ylnOmyAe66w&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=b7iBj7x4wh3ylnOmyAe66w",
     },
   ];
+
+  const categoryList: string[] = ["Food Trucks", "Vegetarian", "Burgers"];
   return (
     <>
       <Head>
@@ -95,8 +98,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <CategoryField text={"Vegetarian"} />
         <div>
+          <Categories categoryList={categoryList} />
           <RestaurantsLayout restaurantList={restaurants} />
         </div>
       </main>

@@ -6,6 +6,7 @@ import ButtonView from "@/components/atoms/button/ButtonView";
 import CategoryField from "@/components/atoms/category/CategoryField";
 import { SkeletonShape } from "@/components/atoms/skeletonShape/SkeletonShape";
 import FoodCard from "@/components/molecules/card/FoodCard";
+import { RatingIcon } from "@/components/atoms/rating/RatingIcon";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function Home() {
         <div>
           <FoodCard
             name="Ada's Cafe"
-            rating="3.5"
+            rating={3.5}
             price="$$$"
             url="xxx"
             imageUrl="https://s3-media3.fl.yelpcdn.com/bphoto/Hg53Z1OSv8tfAOSXPL1fLQ/o.jpg"

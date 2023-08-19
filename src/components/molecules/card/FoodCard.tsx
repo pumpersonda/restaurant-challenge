@@ -1,11 +1,13 @@
 import ButtonView from "@/components/atoms/button/ButtonView";
+import { RatingIcon } from "@/components/atoms/rating/RatingIcon";
 import styles from "@/styles/FoodCard.module.sass";
 import Image from "next/image";
+import Ratings from "../rating/Ratings";
 
 export interface FoodCardProps {
   imageUrl: string;
   name: string;
-  rating: string;
+  rating: number;
   price: string;
   url: string;
 }
@@ -26,7 +28,9 @@ export default function FoodCard({
         <div className={styles.foodCardTextContent}>
           <div className={styles.foodCardTextTitle}>{name}</div>
           <div className={styles.foodCardRating}>
-            <div>{rating}</div>
+            <div>
+              <Ratings rating={rating}></Ratings>
+            </div>
             <div>{price}</div>
           </div>
           <div className={styles.foodCardButtonContent}>

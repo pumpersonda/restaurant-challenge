@@ -1,4 +1,4 @@
-$layout-breakpoint-small: 960px
+@use 'variables'
 .btnView
     background: rgb(253,114,0)
     background: linear-gradient(90deg, rgba(253,114,0,1) 43%, rgba(240,130,39,1) 68%, rgba(241,167,106,1) 100%)
@@ -7,8 +7,9 @@ $layout-breakpoint-small: 960px
     font-size: 14px
     font-weight: bold
     padding: 16px 45px
+    text-decoration: none
 
-@media (max-width: $layout-breakpoint-small)
+@media (max-width: variables.$layout-breakpoint-small)
     .btnView
         padding: 10px 28px
         font-size: 19px

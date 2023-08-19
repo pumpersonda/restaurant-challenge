@@ -1,4 +1,10 @@
+@use 'variables'
+
 .restaurantContainer
     display: flex
     flex-wrap: wrap
-    justify-content: start
+    justify-content: center
+
+@media (max-width: variables.$layout-breakpoint-small)
+    .restaurantContainer
+        justify-content: flex-start

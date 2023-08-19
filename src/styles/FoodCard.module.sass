@@ -1,6 +1,7 @@
-$layout-breakpoint-small: 960px
+@use 'variables'
 
 .foodCardContainer
+    margin: 20px 30px
     align-items: center
     display: flex
     flex-direction: column
@@ -30,16 +31,23 @@ $layout-breakpoint-small: 960px
     padding-top: 20px
     margin-bottom: -20px
 
-@media (max-width: $layout-breakpoint-small)
+@media (max-width: variables.$layout-breakpoint-small)
     .foodCardImg
         padding: 0 20px 0 0
     .foodCardTextTitle
         border: none
         padding: 0
-    .foodCardContainer,
+    .foodCardContainer
+        flex-direction: row
+        padding: 20px 0
+        margin: 0
+        border: none
+        border-bottom: 1px solid black
+        width: 100%
     .foodCardContent
         flex-direction: row
         border: none
+        padding: 0
     .foodCardRating
         flex-direction: column
         padding: 0

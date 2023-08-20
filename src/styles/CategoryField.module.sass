@@ -1,3 +1,5 @@
+@use 'variables'
+
 .labelFoodFilter
     background-color: #f7f7f7
     border-radius: 8px
@@ -5,5 +7,16 @@
     color: black
     font-size: 25px
     font-weight: 500
-    padding: 14px 50px 14px 21px
-    min-width: 120px
+    display: flex
+    min-width: 255px
+    margin-right: 65px
+    justify-content: center
+    align-items: center
+
+.labelFoodFilter.selected
+    border: 1px solid orange
+
+@media (max-width: variables.$layout-breakpoint-small)
+    .labelFoodFilter
+        margin-right: 30px
+        min-width: 190px

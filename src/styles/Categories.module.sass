@@ -1,6 +1,10 @@
+@use 'variables'
 .categoryContainer
     display: flex
     flex-wrap: nowrap
-    justify-content: center
-    border: 1px solid black
+    padding: 1%
     overflow: hidden
+
+@media (max-width: variables.$layout-breakpoint-small)
+    .categoryContainer
+        overflow: auto

@@ -9,8 +9,8 @@ export default function RestaurantsLayout({
 }: RestaurantsProps) {
   return (
     <div className={styles.restaurantContainer}>
-      {restaurantList.map((restaurant: FoodCardProps) => {
-        return <FoodCard key={restaurant.id} {...restaurant} />;
+      {restaurantList.map((restaurant: FoodCardProps, index: number) => {
+        return <FoodCard key={index} {...restaurant} />;
       })}
     </div>
   );

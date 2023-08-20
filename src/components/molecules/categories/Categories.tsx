@@ -3,8 +3,9 @@ import CategoryField, {
 } from "@/components/atoms/category/CategoryField";
 import styles from "@/styles/Categories.module.sass";
 import { YelpCategoriesType } from "@/types/categories";
+import React from "react";
 import { MouseEventHandler } from "react";
-
+import { useEffect, useRef, useState } from "react";
 export interface CategoriesProps {
   categoryList: YelpCategoriesType[];
   onSelectCategory: (alias: string) => void;
@@ -14,8 +15,30 @@ export default function Categories({
   categoryList,
   onSelectCategory,
 }: CategoriesProps) {
+  const item = React.useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const el = document.getElementById("categoriesLayout") as HTMLInputElement;
+    const onScroll = (e: { preventDefault: () => void; deltaY: number }) => {
+      e.preventDefault();
+
+      if (item && item.current) {
+        if (e.deltaY > 0) {
+          item.current.scrollLeft += 100;
+        } else {
+          item.current.scrollLeft -= 100;
+        }
+      }
+    };
+    el.addEventListener("wheel", onScroll);
+
+    return () => {
+      el.removeEventListener("wheel", onScroll);
+    };
+  }, []);
+
   return (
-    <div className={styles.categoryContainer}>
+    <div id="categoriesLayout" className={styles.categoryContainer} ref={item}>
       {categoryList.map((category: YelpCategoriesType, index: number) => {
         return (
           <CategoryField

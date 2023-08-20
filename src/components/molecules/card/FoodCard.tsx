@@ -24,7 +24,7 @@ export default function FoodCard({
     <div className={styles.foodCardContainer}>
       <div className={styles.foodCardContent}>
         <div className={styles.foodCardImg}>
-          <Image src={imageUrl} width={120} height={120} alt={name} />
+          <Image src={imageUrl} width={140} height={140} alt={name} />
         </div>
         <div className={styles.foodCardTextContent}>
           <div className={styles.foodCardTextTitle}>{name}</div>

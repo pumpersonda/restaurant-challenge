@@ -1,32 +1,33 @@
 @use 'variables'
 
 .foodCardContainer
-    margin: 20px 30px
+    margin: 30px 30px
     align-items: center
     display: flex
     flex-direction: column
     font-weight: 600
-    max-width: 200px
+    max-width: 300px
 
 .foodCardContent
     align-items: center
     display: flex
     flex-direction: column
-    border: 1px solid black
-    padding: 15px 36px
+    box-shadow: 1px 1px 4px 2px #aeabab
+    padding: 25px 55px
+    height: 270px
 
 .foodCardTextContent
     display: flex
     flex-direction: column
 
 .foodCardTextTitle
-    padding: 15px
+    padding: 20px 0
+    margin-top: 10px
     border-bottom: 1px solid black
-    display: block
-    width: 110px
     white-space: nowrap
     overflow: hidden
     text-overflow: ellipsis
+    width: 150px
 
 .foodCardRating
     display: flex
@@ -34,26 +35,29 @@
     padding: 15px 0
 
 .foodCardButtonContent
-    padding-top: 20px
-    margin-bottom: -20px
+    display: flex
+    justify-content: center
+    margin-top: 8px
 
 @media (max-width: variables.$layout-breakpoint-small)
+    .foodCardContainer
+        margin: 20px 30px
+        flex-direction: row
+        padding: 20px 0
+        margin: 0
+        border: none
+        box-shadow: 0 4px 2px -2px #e0dada
+        max-width: none
+        width: 100%
     .foodCardImg
         padding: 0 20px 0 0
     .foodCardTextTitle
         border: none
         padding: 0
-    .foodCardContainer
-        flex-direction: row
-        padding: 20px 0
-        margin: 0
-        border: none
-        border-bottom: 1px solid black
-        max-width: none
-        width: 100%
     .foodCardContent
+        height: 150px
         flex-direction: row
-        border: none
+        box-shadow: none
         padding: 0
     .foodCardRating
         flex-direction: column

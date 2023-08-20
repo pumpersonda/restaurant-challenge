@@ -3,22 +3,48 @@ import Categories from "@/components/molecules/categories/Categories";
 import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
 import RestaurantsTemplate from "@/components/templates/RestaurantsTemplate";
 import { YelpCategoriesType, yelpCategoriesData } from "@/types/categories";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function RestaurantsPage() {
+  const observerTarget = useRef(null);
   const [restaurants, setRestaurants] = useState<FoodCardProps[]>([]);
   const [categories, setCategories] = useState<YelpCategoriesType[]>([
     ...yelpCategoriesData,
   ]);
   const [currentCategory, setCurrentCategory] = useState<string>("");
+  const [offset, setoffSet] = useState<number>(1);
 
   useEffect(() => {
-    fetchRestaurants(currentCategory);
-  }, [currentCategory]);
+    fetchRestaurants();
+  }, []);
 
-  const fetchRestaurants = async (category: string) => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setoffSet((val) => val++);
+          fetchRestaurants();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => {
+      if (observerTarget.current) {
+        observer.unobserve(observerTarget.current);
+      }
+    };
+  }, []);
+
+  const fetchRestaurants = async () => {
     fetch(
-      "/api/v3/businesses/search?location=San Jose, CA95127&term=restaurants&limit=15&offset=2&categories=" +
+      "/api/v3/businesses/search?location=San Jose, CA95127&term=restaurants&limit=15&offset=" +
+        offset +
+        "&categories=" +
         currentCategory,
       {
         headers: {
@@ -40,7 +66,10 @@ export default function RestaurantsPage() {
             };
           }
         );
-        setRestaurants(finalResult);
+        setRestaurants((currentState) => {
+          console.log(currentState);
+          return [...finalResult, ...currentState];
+        });
       });
   };
 
@@ -61,6 +90,7 @@ export default function RestaurantsPage() {
         }
         cards={<RestaurantsLayout restaurantList={restaurants} />}
       />
+      <div ref={observerTarget}></div>
     </>
   );
 }

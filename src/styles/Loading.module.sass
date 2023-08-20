@@ -1,0 +1,47 @@
+.loadingContainer
+    display: flex
+    justify-content: center
+
+    @keyframes dotFlashing
+        0%
+            background-color: #ff6602
+
+        50%, 100%
+            background-color: rgba(255, 150, 0, 0.2)
+
+.dotFlashing
+    position: relative
+
+    width: 20px
+    height: 20px
+    border-radius: 10px
+    background-color: #ff6602
+    color: #ff6602
+    animation: dotFlashing 1s infinite linear alternate
+    animation-delay: 0.5s
+
+    &::before, &::after
+        content: ""
+        display: inline-block
+        position: absolute
+        top: 0
+
+    &::before
+        left: -25px
+        width: 20px
+        height: 20px
+        border-radius: 10px
+        background-color: #ff6602
+        color: #ff6602
+        animation: dotFlashing 1s infinite alternate
+        animation-delay: 0s
+
+    &::after
+        left: 25px
+        width: 20px
+        height: 20px
+        border-radius: 10px
+        background-color: #ff6602
+        color: #ff6602
+        animation: dotFlashing 1s infinite alternate
+        animation-delay: 1s

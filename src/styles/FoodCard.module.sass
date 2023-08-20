@@ -6,6 +6,7 @@
     display: flex
     flex-direction: column
     font-weight: 600
+    max-width: 200px
 
 .foodCardContent
     align-items: center
@@ -21,6 +22,11 @@
 .foodCardTextTitle
     padding: 15px
     border-bottom: 1px solid black
+    display: block
+    width: 110px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
 
 .foodCardRating
     display: flex
@@ -43,6 +49,7 @@
         margin: 0
         border: none
         border-bottom: 1px solid black
+        max-width: none
         width: 100%
     .foodCardContent
         flex-direction: row

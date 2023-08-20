@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://api.yelp.com/:path*",
+      },
+    ];
+  },
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -12,6 +20,18 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "s3-media4.fl.yelpcdn.com",
+        port: "",
+        pathname: "/bphoto/**",
+      },
+      {
+        protocol: "https",
+        hostname: "s3-media2.fl.yelpcdn.com",
+        port: "",
+        pathname: "/bphoto/**",
+      },
+      {
+        protocol: "https",
+        hostname: "s3-media1.fl.yelpcdn.com",
         port: "",
         pathname: "/bphoto/**",
       },

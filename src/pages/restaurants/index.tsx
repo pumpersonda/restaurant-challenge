@@ -19,11 +19,26 @@ export default function RestaurantsPage() {
   }, []);
 
   useEffect(() => {
+    if (currentCategory.length > 0) {
+      fetchRestaurants();
+    }
+  }, [currentCategory]);
+
+  useEffect(() => {
+    if (offset > 1) {
+      fetchRestaurants();
+    }
+  }, [offset]);
+
+  useEffect(() => {
+    if (restaurants.length === 0) {
+      return;
+    }
+    console.log("HERE");
     const observer = new IntersectionObserver(
-      (entries) => {
+      async (entries) => {
         if (entries[0].isIntersecting) {
-          setoffSet((val) => val++);
-          fetchRestaurants();
+          setoffSet((val) => val + 5);
         }
       },
       { threshold: 0.1 }
@@ -38,11 +53,11 @@ export default function RestaurantsPage() {
         observer.unobserve(observerTarget.current);
       }
     };
-  }, []);
+  }, [restaurants]);
 
   const fetchRestaurants = async () => {
     fetch(
-      "/api/v3/businesses/search?location=San Jose, CA95127&term=restaurants&limit=15&offset=" +
+      "/api/v3/businesses/search?location=San Jose, CA95127&term=restaurants&limit=5&offset=" +
         offset +
         "&categories=" +
         currentCategory,
@@ -68,13 +83,17 @@ export default function RestaurantsPage() {
         );
         setRestaurants((currentState) => {
           console.log(currentState);
-          return [...finalResult, ...currentState];
+          return [...currentState, ...finalResult];
         });
+      })
+      .catch((err) => {
+        console.error(err); // TODO
       });
   };
 
   const onSelectCategory = (alias: string) => {
-    console.log("alias", alias);
+    setoffSet(1);
+    setRestaurants([]);
     setCurrentCategory(alias);
   };
 

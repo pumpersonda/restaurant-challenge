@@ -4,8 +4,8 @@
     display: flex
     flex-wrap: nowrap
     padding: 1% 35px
-    overflow: hidden
-
-@media (max-width: variables.$layout-breakpoint-small)
-    .categoryContainer
-        overflow: auto
+    overflow: auto
+    -ms-overflow-style: none
+    scrollbar-width: none
+    &::-webkit-scrollbar
+        display: none

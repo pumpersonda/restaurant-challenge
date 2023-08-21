@@ -10,7 +10,7 @@ import "@testing-library/jest-dom";
 import { yelpCategoriesData } from "@/types/categories";
 import FoodCard, { FoodCardProps } from "@/components/molecules/card/FoodCard";
 import RestaurantsTemplate from "@/components/templates/RestaurantsTemplate";
-import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
+import Restaurants from "@/components/organisms/restaurants/Restaurants";
 import Util from "@/utils";
 import { restaurantsDataExample } from "../src/data";
 
@@ -65,10 +65,7 @@ describe("Restaurants", () => {
     render(
       <RestaurantsTemplate
         cards={
-          <RestaurantsLayout
-            restaurantList={foodCards}
-            showSkeletonList={false}
-          />
+          <Restaurants restaurantList={foodCards} showSkeletonList={false} />
         }
         categories={<></>}
         isLoading={false}

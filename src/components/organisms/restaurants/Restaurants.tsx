@@ -6,7 +6,7 @@ export interface RestaurantsProps {
   restaurantList: FoodCardProps[];
   showSkeletonList?: boolean;
 }
-export default function RestaurantsLayout({
+export default function Restaurants({
   restaurantList,
   showSkeletonList = false,
 }: RestaurantsProps) {
@@ -17,8 +17,6 @@ export default function RestaurantsLayout({
         : restaurantList.map((restaurant: FoodCardProps, index: number) => {
             return <FoodCard key={index} {...restaurant} />;
           })}
-      {/*showSkeletonList &&
-        [...Array(10)].map((e: number, i: number) => <SkeletonCard key={i} />)*/}
     </div>
   );
 }

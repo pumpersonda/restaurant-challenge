@@ -1,7 +1,7 @@
 import { CategoryContext } from "@/components/CategoryContext";
 import { FoodCardProps } from "@/components/molecules/card/FoodCard";
 import Categories from "@/components/molecules/categories/Categories";
-import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
+import Restaurants from "@/components/organisms/restaurants/Restaurants";
 import RestaurantsTemplate from "@/components/templates/RestaurantsTemplate";
 import { YelpCategoriesType, yelpCategoriesData } from "@/types/categories";
 import Util from "@/utils";
@@ -103,7 +103,7 @@ export default function RestaurantsPage() {
           </CategoryContext.Provider>
         }
         cards={
-          <RestaurantsLayout
+          <Restaurants
             restaurantList={restaurants}
             showSkeletonList={isLoading}
           />

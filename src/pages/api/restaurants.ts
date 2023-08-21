@@ -5,9 +5,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  console.log(req.query["offset"]);
-  console.log(req.query["categories"]);
-
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/v3/businesses/search?` +
       new URLSearchParams({

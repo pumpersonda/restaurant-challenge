@@ -12,7 +12,7 @@ import FoodCard, { FoodCardProps } from "@/components/molecules/card/FoodCard";
 import RestaurantsTemplate from "@/components/templates/RestaurantsTemplate";
 import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
 import Util from "@/utils";
-import { restaurantsDataExample } from "./data";
+import { restaurantsDataExample } from "../src/data";
 
 describe("Restaurants", () => {
   const fetchMock = (global.fetch = jest.fn(() =>

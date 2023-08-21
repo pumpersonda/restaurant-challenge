@@ -1,3 +1,4 @@
+import { CategoryContext } from "@/components/CategoryContext";
 import { FoodCardProps } from "@/components/molecules/card/FoodCard";
 import Categories from "@/components/molecules/categories/Categories";
 import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
@@ -62,8 +63,8 @@ export default function RestaurantsPage() {
     fetch(
       `/api/restaurants?` +
         new URLSearchParams({
-          offset: offset + "",
-          categories: currentCategory + "",
+          offset: offset.toString(),
+          categories: currentCategory,
         })
     )
       .then((response) => response.json())
@@ -76,14 +77,16 @@ export default function RestaurantsPage() {
         });
       })
       .catch((err) => {
-        console.error(err); // TODO
+        alert(err);
       });
   };
 
   const onSelectCategory = (alias: string) => {
     setoffSet(0);
     setRestaurants([]);
-    setCurrentCategory(alias);
+    const newCategory = alias === currentCategory ? " " : alias;
+
+    setCurrentCategory(newCategory);
   };
 
   return (
@@ -92,10 +95,12 @@ export default function RestaurantsPage() {
         isLoading={isLoading}
         pageTitle="Restaurants"
         categories={
-          <Categories
-            categoryList={categories}
-            onSelectCategory={onSelectCategory}
-          />
+          <CategoryContext.Provider value={currentCategory}>
+            <Categories
+              categoryList={categories}
+              onSelectCategory={onSelectCategory}
+            />
+          </CategoryContext.Provider>
         }
         cards={
           <RestaurantsLayout

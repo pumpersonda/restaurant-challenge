@@ -1,6 +1,5 @@
 import ButtonView from "@/components/atoms/button/ButtonView";
-import { RatingIcon } from "@/components/atoms/rating/RatingIcon";
-import styles from "@/styles/FoodCard.module.sass";
+import styles from "./FoodCard.module.sass";
 import Image from "next/image";
 import Ratings from "../rating/Ratings";
 

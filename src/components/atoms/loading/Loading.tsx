@@ -1,4 +1,4 @@
-import styles from "@/styles/Loading.module.sass";
+import styles from "./Loading.module.sass";
 
 export default function Loading() {
   return (

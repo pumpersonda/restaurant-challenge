@@ -1,6 +1,6 @@
 import FoodCard, { FoodCardProps } from "@/components/molecules/card/FoodCard";
 import SkeletonCard from "@/components/molecules/skeletonCard/SkeletonCard";
-import styles from "@/styles/Restaurant.layout.module.sass";
+import styles from "./Restaurant.layout.module.sass";
 
 export interface RestaurantsProps {
   restaurantList: FoodCardProps[];

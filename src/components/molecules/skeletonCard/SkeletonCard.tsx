@@ -1,4 +1,4 @@
-import styles from "@/styles/FoodCard.module.sass";
+import styles from "../card/FoodCard.module.sass";
 
 export default function SkeletonCard() {
   return (

@@ -1,11 +1,8 @@
-import CategoryField, {
-  CategoryFieldProps,
-} from "@/components/atoms/category/CategoryField";
-import styles from "@/styles/Categories.module.sass";
+import CategoryField from "@/components/atoms/category/CategoryField";
+import styles from "./Categories.module.sass";
 import { YelpCategoriesType } from "@/types/categories";
 import React from "react";
-import { MouseEventHandler } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 export interface CategoriesProps {
   categoryList: YelpCategoriesType[];
   onSelectCategory: (alias: string) => void;

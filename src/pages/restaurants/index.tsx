@@ -17,16 +17,19 @@ export default function RestaurantsPage() {
   const [currentCategory, setCurrentCategory] = useState<string>("");
   const [offset, setoffSet] = useState<number>(0);
 
+  // Fetch information when render first time
   useEffect(() => {
     fetchRestaurants();
   }, []);
 
+  // Fetch information when user select a category
   useEffect(() => {
     if (currentCategory.length > 0) {
       fetchRestaurants();
     }
   }, [currentCategory]);
 
+  // Fetch information when user scroll
   useEffect(() => {
     if (offset > 1) {
       fetchRestaurants();

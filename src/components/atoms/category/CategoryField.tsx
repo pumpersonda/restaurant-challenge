@@ -1,6 +1,6 @@
 import { CategoryContext } from "@/components/CategoryContext";
-import styles from "@/styles/CategoryField.module.sass";
-import { MouseEventHandler, useContext } from "react";
+import styles from "./CategoryField.module.sass";
+import { useContext } from "react";
 
 export interface CategoryFieldProps {
   id: string;

@@ -16,6 +16,10 @@ npm run test
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Deployed version
+
+Open [https://restaurant-challenge-4yxf.vercel.app/restaurants](https://restaurant-challenge-4yxf.vercel.app/restaurants)
+
 ### NOTE:
 
 Create a .env.local with the following keys if you want to run it locally

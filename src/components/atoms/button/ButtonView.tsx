@@ -1,4 +1,4 @@
-import styles from "@/styles/Button.module.sass";
+import styles from "./Button.module.sass";
 export interface ButtonProps {
   url: string;
 }

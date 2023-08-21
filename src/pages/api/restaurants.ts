@@ -8,6 +8,7 @@ export default async function handler(
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/v3/businesses/search?` +
       new URLSearchParams({
+        term: "restaurants",
         location: "San Jose, CA95127",
         offset: req.query.offset as string,
         categories: req.query.categories as string,

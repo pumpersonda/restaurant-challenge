@@ -68,18 +68,32 @@
         box-shadow: 0 4px 2px -2px #e0dada
         max-width: none
         width: 100%
+
     .foodCardImg
-        padding: 0 20px 0 0
+        margin: 0 20px 0 0
+
     .foodCardTextTitle
+        box-shadow: none
         border: none
         padding: 0
+
     .foodCardContent
         height: 150px
         flex-direction: row
         box-shadow: none
         padding: 0
+
     .foodCardRating
         flex-direction: column
         padding: 0
+        &>div
+            margin: 5px 0
+
     .foodCardButtonContent
         margin-bottom: 0
+        justify-content: flex-start
+
+    .skeletonText
+        height: 30px
+        margin: 10px
+        border-radius: 0.25rem

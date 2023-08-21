@@ -3,16 +3,18 @@ import Categories from "@/components/molecules/categories/Categories";
 import RestaurantsLayout from "@/components/organisms/restaurants/RestaurantsLayout";
 import RestaurantsTemplate from "@/components/templates/RestaurantsTemplate";
 import { YelpCategoriesType, yelpCategoriesData } from "@/types/categories";
+import Util from "@/utils";
 import { useEffect, useRef, useState } from "react";
 
 export default function RestaurantsPage() {
   const observerTarget = useRef(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [restaurants, setRestaurants] = useState<FoodCardProps[]>([]);
   const [categories, setCategories] = useState<YelpCategoriesType[]>([
     ...yelpCategoriesData,
   ]);
   const [currentCategory, setCurrentCategory] = useState<string>("");
-  const [offset, setoffSet] = useState<number>(1);
+  const [offset, setoffSet] = useState<number>(0);
 
   useEffect(() => {
     fetchRestaurants();
@@ -34,11 +36,11 @@ export default function RestaurantsPage() {
     if (restaurants.length === 0) {
       return;
     }
-    console.log("HERE");
+
     const observer = new IntersectionObserver(
       async (entries) => {
         if (entries[0].isIntersecting) {
-          setoffSet((val) => val + 5);
+          setoffSet((val) => val + 15);
         }
       },
       { threshold: 0.1 }
@@ -56,33 +58,20 @@ export default function RestaurantsPage() {
   }, [restaurants]);
 
   const fetchRestaurants = async () => {
+    setIsLoading(true);
     fetch(
-      "/api/v3/businesses/search?location=San Jose, CA95127&term=restaurants&limit=5&offset=" +
-        offset +
-        "&categories=" +
-        currentCategory,
-      {
-        headers: {
-          Authorization:
-            "Bearer XXMhg9NmTyyi8DLdTp7JKkapptmRUFyK-3HXH-m6XKOpWeMX8dPAH2JDmXkb3iOtGSngmHUkFG3dJWDfsFYtFFQVEBw1MOxGb7VbemP7Szv9cZ1XotFy2nnYPzThZHYx",
-        },
-      }
+      `/api/restaurants?` +
+        new URLSearchParams({
+          offset: offset + "",
+          categories: currentCategory + "",
+        })
     )
       .then((response) => response.json())
       .then((responseOject) => {
-        const finalResult: FoodCardProps[] = responseOject.businesses.map(
-          (business: any) => {
-            return {
-              name: business.name,
-              imageUrl: business.image_url,
-              url: business.url,
-              rating: business.rating,
-              price: business.price,
-            };
-          }
+        const finalResult: FoodCardProps[] = Util.mapToFoodCardProps(
+          responseOject.businesses
         );
         setRestaurants((currentState) => {
-          console.log(currentState);
           return [...currentState, ...finalResult];
         });
       })
@@ -92,7 +81,7 @@ export default function RestaurantsPage() {
   };
 
   const onSelectCategory = (alias: string) => {
-    setoffSet(1);
+    setoffSet(0);
     setRestaurants([]);
     setCurrentCategory(alias);
   };
@@ -100,6 +89,7 @@ export default function RestaurantsPage() {
   return (
     <>
       <RestaurantsTemplate
+        isLoading={isLoading}
         pageTitle="Restaurants"
         categories={
           <Categories
@@ -107,7 +97,12 @@ export default function RestaurantsPage() {
             onSelectCategory={onSelectCategory}
           />
         }
-        cards={<RestaurantsLayout restaurantList={restaurants} />}
+        cards={
+          <RestaurantsLayout
+            restaurantList={restaurants}
+            showSkeletonList={isLoading}
+          />
+        }
       />
       <div ref={observerTarget}></div>
     </>

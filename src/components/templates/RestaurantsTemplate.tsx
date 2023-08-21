@@ -15,12 +15,14 @@ export default function RestaurantsTemplate({
   isLoading,
 }: RestaurantsTemplateProps) {
   return (
-    <div>
+    <div data-testid="restaurants-template">
       <header>
         <h1>{pageTitle}</h1>
       </header>
-      <nav className={styles.nav}>{categories}</nav>
-      <main>{cards}</main>
+      <main className={styles.main}>
+        {categories}
+        {cards}
+      </main>
       {isLoading && <Loading />}
     </div>
   );

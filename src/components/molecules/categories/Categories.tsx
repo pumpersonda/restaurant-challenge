@@ -18,7 +18,7 @@ export default function Categories({
   const item = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const el = document.getElementById("categoriesLayout") as HTMLInputElement;
+    const el = document.getElementById("categories-layout") as HTMLInputElement;
     const onScroll = (e: { preventDefault: () => void; deltaY: number }) => {
       e.preventDefault();
 
@@ -38,7 +38,12 @@ export default function Categories({
   }, []);
 
   return (
-    <div id="categoriesLayout" className={styles.categoryContainer} ref={item}>
+    <div
+      data-testid="categories-layout"
+      id="categories-layout"
+      className={styles.categoryContainer}
+      ref={item}
+    >
       {categoryList.map((category: YelpCategoriesType, index: number) => {
         return (
           <CategoryField

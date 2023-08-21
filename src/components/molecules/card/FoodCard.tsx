@@ -21,7 +21,7 @@ export default function FoodCard({
   url,
 }: FoodCardProps) {
   return (
-    <div className={styles.foodCardContainer}>
+    <div data-testid="food-card-container" className={styles.foodCardContainer}>
       <div className={styles.foodCardContent}>
         <div className={styles.foodCardImg}>
           <Image src={imageUrl} width={140} height={140} alt={name} />

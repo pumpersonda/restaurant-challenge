@@ -2,7 +2,10 @@ import styles from "@/styles/FoodCard.module.sass";
 
 export default function SkeletonCard() {
   return (
-    <div className={styles.foodCardContainer}>
+    <div
+      data-testid="skeleton-card-container"
+      className={styles.foodCardContainer}
+    >
       <div className={styles.foodCardContent}>
         <div className={`${styles.foodCardImg} ${styles.skeleton}`}></div>
         <div className={styles.foodCardTextContent}>

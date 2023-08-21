@@ -11,6 +11,7 @@ export default async function handler(
         term: "restaurants",
         location: "San Jose, CA95127",
         offset: req.query.offset as string,
+        limit: "15",
         categories: req.query.categories as string,
       }),
     {

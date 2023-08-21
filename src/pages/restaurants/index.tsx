@@ -29,7 +29,7 @@ export default function RestaurantsPage() {
     }
   }, [currentCategory]);
 
-  // Fetch information when user scroll
+  // Fetch information when
   useEffect(() => {
     if (offset > 1) {
       fetchRestaurants();
